@@ -1,3 +1,7 @@
 .tunnel circle {
   transform-origin: center;
 }
+
+.w-200{
+  width: 200%;
+}
