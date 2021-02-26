@@ -5,3 +5,19 @@
 .w-200{
   width: 200%;
 }
+
+.bg-yellow{
+  background-color: #FFF44C;
+}
+
+.bg-blue{
+  background-color: #7CEBFC;
+}
+
+.bg-purple{
+  background-color: #CA8CF9;
+}
+
+.bg-red{
+  background-color: #F9343D;
+}
