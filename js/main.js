@@ -25,3 +25,17 @@ anime({
   easing:'linear',
   autoplay: true
 });
+//ZIGZAG BOX
+const zigzagPath = document.querySelector('#zigzag path');
+//setDashoffset ->how long it is
+const zigzagOffset = anime.setDashoffset(zigzagPath);
+zigzagPath.setAttribute('stroke-dashoffset', zigzagOffset)
+anime({
+    targets: zigzagPath,
+    strokeDashoffset: [zigzagOffset, 0],
+    duration: 3000,
+    loop: true,
+    direction: 'alternate',
+    easing: 'easeInOutSine',
+    autoplay: true
+ });
