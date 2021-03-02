@@ -1,3 +1,23 @@
+//Cross animation box
+//duplicate cross svg 10 times
+const duplicateHtml = (element, quantity) => {
+	const newContent = new Array(quantity).fill(element.innerHTML).join('');
+	element.innerHTML = newContent
+}
+const crosses = document.querySelector('#crosses');
+duplicateHtml(crosses, 10);
+
+anime({
+  targets: '#crosses path',
+  rotate:'1turn',
+  loop:true,
+  duration: 1200,
+  delay: (el, i , l) => i * 100,
+  direction :'alternate',
+  easing:'easeInOutSine',
+})
+
+
 //CIRCLE BOX
 anime({
   //CSS selector
@@ -39,3 +59,33 @@ anime({
     easing: 'easeInOutSine',
     autoplay: true
  });
+
+//WAVE BOX
+const wavePath = document.querySelector('#wave path');
+const waveOffset = anime.setDashoffset(wavePath);
+wavePath.setAttribute('stroke-dashoffset', waveOffset)
+anime({
+		targets: wavePath,
+  	strokeDashoffset:[0, waveOffset],
+ 		duration: 2000,
+  	loop: true,
+    direction:'alternate',
+    easing: 'easeInOutSine',
+})
+
+
+//Dots animation
+duplicateHtml(document.querySelector('#dots'), 40);
+const dots = document.querySelectorAll('#dots .dot');
+dots.forEach(dot => {
+  anime({
+  targets: '.dot',
+	rotate: (el, i) => anime.random(90, 360),
+	duration: (el, i) => anime.random(250, 750),
+	loop: true,
+	easing: 'easeInOutSine',
+	direction: 'alternate',
+	autoplay: true
+})
+})
+
