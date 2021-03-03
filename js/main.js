@@ -4,8 +4,8 @@ const duplicateHtml = (element, quantity) => {
 	const newContent = new Array(quantity).fill(element.innerHTML).join('');
 	element.innerHTML = newContent
 }
-const crosses = document.querySelector('#crosses');
-duplicateHtml(crosses, 10);
+
+duplicateHtml(document.querySelector('#crosses'), 10);
 
 anime({
   targets: '#crosses path',
@@ -76,8 +76,8 @@ anime({
 
 //Dots animation
 duplicateHtml(document.querySelector('#dots'), 40);
-const dots = document.querySelectorAll('#dots .dot');
-dots.forEach(dot => {
+const allDots = document.querySelectorAll('#dots .dot');
+allDots.forEach(dot => {
   anime({
   targets: '.dot',
 	rotate: (el, i) => anime.random(90, 360),
@@ -86,6 +86,41 @@ dots.forEach(dot => {
 	easing: 'easeInOutSine',
 	direction: 'alternate',
 	autoplay: true
+	})
 })
+//circles animation
+duplicateHtml(document.querySelector('#circles'), 20);
+  anime({
+    targets: '#circles .dot',
+    scale:[0, 1.2],
+    delay: (el, i) => i *100,
+    duration:250,
+    loop: true,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+    autoplay: true
+   })
+
+//Flashing animation boxes
+anime({
+  targets:'#flashes .flash',
+  backgroundColor: (el, i) => ['#fff636','#cb89fc','#fc3035','#77ebfd'][i],
+  delay: (el, i) => anime.random(50, 100),
+  duration: 500,
+  loop: true,
+  direction: 'alternate',
+  easing: 'easeInOutSine',
 })
 
+//Square tunnel animation box
+anime({
+  targets:'#squares rect',
+  translateX: ['-50%','-50%'],
+  translateY: ['-50%','-50%'],
+  rotate:[45, 0, -45],
+  delay: (el, i) => 100 * i,
+  duration: (el, i) => 750,
+  loop: true,
+  direction: 'alternate',
+  easing: 'easeInOutSine',
+})
